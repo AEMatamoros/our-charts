@@ -1,0 +1,19 @@
+@import '../../colors.scss';
+
+.main-container{
+    min-height: 100vh;
+    .login-form{
+        min-height: 50vh;
+        width: 350px;
+        border: 1px solid $border-color;
+        border-radius: 5px;
+        
+       .register-link{
+           text-decoration: none;
+           &:hover{
+               color: darken(#198754, 10%); 
+           }
+       }
+    }  
+}
+

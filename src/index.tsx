@@ -1,12 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+// import Register from './components/login/Register';
 import './index.scss';
-import App from './App';
+// Components
+// import App from './App';
+// import Login from './components/login/Login';
+import Home from './components/pages/home/Home';
+
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    
+        {/* <App /> */}
+        {/* <Login/> */}
+        {/* <Register/> */}
+        <Home/>
   </React.StrictMode>,
   document.getElementById('root')
 );
