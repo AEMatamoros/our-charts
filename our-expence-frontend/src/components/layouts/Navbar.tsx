@@ -15,7 +15,7 @@ export default function Topbar() {
       <Container>
         <Navbar.Brand href="#home">
           
-          <i className="fa-solid fa-leaf px-2"></i> 
+          <i className="fa-solid fa-leaf px-2 main-icon"></i> 
           <span className='brand'>
           Our Expense
           </span>

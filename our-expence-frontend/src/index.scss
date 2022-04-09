@@ -18,6 +18,10 @@ h1,h2,h3,h4,h5,h6{
   font-family: 'futvFont', Arial, sans-serif;
 }
 
+.main-icon{
+  color: $details;
+}
+
 p, span,a,li{
   font-family: 'bodyFont', Arial, sans-serif;
 }
@@ -72,6 +76,10 @@ background: linear-gradient(164deg, rgba(239,240,238,1) 77%, rgba(108,94,69,1) 1
 }
 
 .main-table{
+  thead{
+    background-color: $primary;
+    color:$secondary
+  }
   &:hover{
     border-radius: 10px;
     box-shadow: 3px 5px 5px  rgb(177, 177, 177);

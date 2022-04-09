@@ -35,7 +35,7 @@ export default function Report() {
           <h1 className="col-6">Monthly Report</h1>
           <div className="col-2">
             <div className="form-group">
-              <label htmlFor="">Type</label>
+              <strong><label htmlFor="">Type</label></strong>
               <select
                 name=""
                 id=""
@@ -49,7 +49,7 @@ export default function Report() {
           </div>
           <div className="col-2">
             <div className="form-group">
-              <label htmlFor="">Year</label>
+              <strong><label htmlFor="">Year</label></strong>
               <select name="" id="" className="form-control">
                 <option value="2022">2022</option>
                 <option value="2023">2023</option>
@@ -61,7 +61,7 @@ export default function Report() {
           </div>
           <div className="col-2">
             <div className="form-group">
-              <label htmlFor="">Month</label>
+              <strong><label htmlFor="">Month</label></strong>
               <select name="" id="" className="form-control">
                 <option value="1">January</option>
                 <option value="2">Febreuary</option>
@@ -90,7 +90,7 @@ export default function Report() {
               </LineChart>
               </ResponsiveContainer>
             ) : (
-              <ResponsiveContainer width={'99%'} height={500}>
+              <ResponsiveContainer width={'99%'} height={350}>
               <BarChart width={970} height={400} data={data}>
                 <XAxis dataKey="name" />
                 <YAxis />

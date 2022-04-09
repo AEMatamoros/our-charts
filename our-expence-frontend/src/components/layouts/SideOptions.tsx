@@ -7,7 +7,7 @@ import './layout.scss';
 
 export default function SideOptions() {
   return (
-    <div className="col-xs-12 col-sm-12 col-md-3 col-lg-3 d-flex justify-content-center align-items-center border-right-c">
+    <div className="col-xs-12 col-sm-12 col-md-3 col-lg-3 d-flex justify-content-center align-items-center nav-bg">
       <Nav defaultActiveKey="/home" className="flex-column">
       <Link className="text-decoration-none py-2 px-4 side-links"to="/">My Expense</Link>
       {/* <Link >className="text-decoration-none py-2 px-4 side-links"Profile</Link> */}
