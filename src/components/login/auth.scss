@@ -1,8 +1,10 @@
 @import '../../colors.scss';
 
 .main-container{
-    min-height: 100vh;
+    height: 80vh;
+    max-height: 80vh;
     .login-form{
+        margin-top: 10vh;
         min-height: 50vh;
         width: 350px;
         border: 1px solid $border-color;

@@ -1,16 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import Register from './components/login/Register';
+
 import './index.scss';
-// Components
-// import App from './App';
-// import Login from './components/login/Login';
-import Home from './components/pages/home/Home';
+import App from './App';
+
+import { BrowserRouter } from 'react-router-dom';
 
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <Home/>,
+  <BrowserRouter>
+    <App/>
+  </BrowserRouter>,
   document.getElementById('root')
 );
 

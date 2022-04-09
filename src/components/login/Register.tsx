@@ -3,6 +3,7 @@ import './auth.scss';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
+import { Link } from 'react-router-dom';
 
 export default function Register() {
   return (
@@ -35,12 +36,14 @@ export default function Register() {
                     <Form.Group className="mb-3" controlId="formBasicCheckbox">
                         <Form.Check type="checkbox" label="Check me out" />
                     </Form.Group>
-                    <Button variant="primary" type="submit" className='form-control'>
-                        Register
-                    </Button>
+                    <Link to ="/login">
+                        <Button variant="primary" type="submit" className='form-control'>
+                            Register
+                        </Button>
+                    </Link>
                     <div className="text-center">
                         <strong className='text-success'>
-                            <a href="/" className=''>Sign In</a>
+                            <Link to="/login">Sign In</Link>
                         </strong>
                     </div>
 

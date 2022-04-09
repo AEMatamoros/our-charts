@@ -3,6 +3,8 @@ import './auth.scss';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
+import { Link } from 'react-router-dom';
+
 export default function Login() {
     return (
         <div className="col-6 mx-auto main-container d-flex justify-content-center align-items-center ">
@@ -27,12 +29,15 @@ export default function Login() {
                     <Form.Group className="mb-3" controlId="formBasicCheckbox">
                         <Form.Check type="checkbox" label="Check me out" />
                     </Form.Group>
-                    <Button variant="primary" type="submit" className='form-control'>
-                        Sign in
-                    </Button>
+                    <Link to = "/">
+                        <Button variant="primary" type="submit" className='form-control'>
+                            Sign in
+                        </Button>
+                    </Link>
+                    
                     <div className="text-center">
                         <strong className='text-success'>
-                            <a href="" className=''>Create Account</a>
+                            <Link to="/register">Create Account</Link>
                         </strong>
                     </div>
 
