@@ -117,7 +117,7 @@ export default function Categories() {
               </button>
             </div>
           </div>
-          <Table striped bordered hover size="sm">
+          <Table hover size="sm">
             <thead>
               <tr>
                 <th>#</th>
@@ -130,7 +130,7 @@ export default function Categories() {
               {expenses.map((product, index) => {
                 return (
                   <tr key={index}>
-                    <td>{index}</td>
+                    <td>{index + 1 }</td>
                     <td>{product.name}</td>
                     <td>{product.max}</td>
                     <td>
