@@ -12,6 +12,7 @@ import {
   Bar,
   Tooltip,
   Legend,
+  ResponsiveContainer
 } from 'recharts'
 
 export default function Report() {
@@ -27,9 +28,9 @@ export default function Report() {
 
   const [show, setShow] = useState(1)
   return (
-    <main className="col-12 row main-container">
+    <main className="col-12 row mx-0 main-container">
       <SideOptions />
-      <div className="col-9 px-4 mt-5">
+      <div className="col-sm-12 col-xs-12 col-md-9 col-lg-9 px-4 mt-5">
         <div className="row">
           <h1 className="col-6">Monthly Report</h1>
           <div className="col-2">
@@ -80,13 +81,16 @@ export default function Report() {
           <div className="col-2"></div>
           <div className="col-12 row">
             {show === 1 ? (
+              <ResponsiveContainer width={'99%'} height={350}>
               <LineChart width={970} height={400} data={data}>
                 <Line type="monotone" dataKey="uv" stroke="#8884d8" />
                 <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
                 <XAxis dataKey="name" />
                 <YAxis />
               </LineChart>
+              </ResponsiveContainer>
             ) : (
+              <ResponsiveContainer width={'99%'} height={500}>
               <BarChart width={970} height={400} data={data}>
                 <XAxis dataKey="name" />
                 <YAxis />
@@ -94,6 +98,7 @@ export default function Report() {
                 <Legend />
                 <Bar dataKey="uv" fill="#8884d8" />
               </BarChart>
+              </ResponsiveContainer>
             )}
           </div>
         </div>

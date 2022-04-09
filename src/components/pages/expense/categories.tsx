@@ -101,9 +101,9 @@ export default function Categories() {
 
   return (
     <>
-      <main className="col-12 row main-container">
+      <main className="col-12 row mx-0 main-container">
         <SideOptions />
-        <div className="col-9 px-4 mt-5">
+        <div className="col-sm-12 col-xs-12 col-md-9 col-lg-9 px-4 mt-5">
           <div className="row">
             <h1 className="col-10">My Categories</h1>
             <div className="col-2">
