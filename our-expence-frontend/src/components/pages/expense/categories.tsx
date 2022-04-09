@@ -79,7 +79,7 @@ export default function Categories() {
   }
 
   const onSubmit = (data: any) => {
-    if (modalLabels.title == 'Add New Product') {
+    if (modalLabels.title === 'Add New Product') {
       console.log('Create')
       console.log(data)
     } else {
@@ -108,7 +108,7 @@ export default function Categories() {
             <h1 className="col-10">My Categories</h1>
             <div className="col-2">
               <button
-                className="btn btn-primary form-control"
+                className="btn btn-main form-control"
                 onClick={() => {
                   handleShow('create')
                 }}
@@ -117,7 +117,7 @@ export default function Categories() {
               </button>
             </div>
           </div>
-          <Table hover size="sm">
+          <Table hover size="sm" className='bg-white main-table'>
             <thead>
               <tr>
                 <th>#</th>
@@ -136,7 +136,7 @@ export default function Categories() {
                     <td>
                       <div className="d-flex justify-content-evenly align-items-center">
                         <i
-                          className="fa-solid fa-pen-to-square text-warning cursor-pointer"
+                          className="fa-solid fa-pen-to-square text-detail1 cursor-pointer"
                           onClick={() => {
                             handleShow('edit', product)
                           }}
@@ -205,7 +205,7 @@ export default function Categories() {
               </select>
             </div>
 
-            <button type="submit" className="form-control btn btn-primary my-4">
+            <button type="submit" className="form-control btn btn-main my-4">
               {modalLabels.button}
             </button>
           </form>

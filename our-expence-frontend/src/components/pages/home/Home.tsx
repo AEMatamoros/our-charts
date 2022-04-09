@@ -90,7 +90,7 @@ export default function Home() {
   }
 
   const onSubmit = (data: any) => {
-    if(modalLabels.title=='Add New Product'){
+    if(modalLabels.title==='Add New Product'){
       console.log("Create")
       console.log(data)
     }else{
@@ -119,14 +119,14 @@ export default function Home() {
             <h1 className="col-10">My Expense</h1>
             <div className="col-2">
               <button
-                className="btn btn-primary form-control"
+                className="btn btn-main form-control"
                 onClick={()=>{handleShow('create')}}
               >
                 Create
               </button>
             </div>
           </div>
-          <Table hover size="sm">
+          <Table hover size="sm" className='bg-white main-table'>
             <thead>
               <tr>
                 <th>#</th>
@@ -146,8 +146,8 @@ export default function Home() {
                     <td>{product.price}</td>
                     <td>
                       <div className="d-flex justify-content-evenly align-items-center">
-                        <i className="fa-solid fa-pen-to-square text-warning cursor-pointer" onClick={()=>{handleShow('edit',product)}}></i>
-                        <i className="fa-solid fa-trash-can text-danger cursor-pointer" onClick={()=>{HandleDelete(product.id)}}></i>
+                        <i className="table-icons fa-solid fa-pen-to-square text-detail1 cursor-pointer" onClick={()=>{handleShow('edit',product)}}></i>
+                        <i className="table-icons fa-solid fa-trash-can text-danger cursor-pointer" onClick={()=>{HandleDelete(product.id)}}></i>
                       </div>
                     </td>
                   </tr>
@@ -203,7 +203,7 @@ export default function Home() {
 
             {errors.category && <span className='text-danger'>This field is required</span>}
 
-            <button type="submit" className="form-control btn btn-primary my-4">
+            <button type="submit" className="form-control btn btn-main my-4">
               {modalLabels.button}
             </button>
           </form>

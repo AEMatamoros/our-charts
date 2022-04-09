@@ -9,8 +9,8 @@ import {
 import Navbar from './components/layouts/Navbar';
 import Footer from './components/layouts/Footer';
 
-import Login from './components/login/Login';
-import Register from './components/login/Register';
+// import Login from './components/login/Login';
+// import Register from './components/login/Register';
 
 import Home from './components/pages/home/Home';
 import Report from './components/pages/expense/Report';

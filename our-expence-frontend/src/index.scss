@@ -1,3 +1,26 @@
+@import './colors.scss';
+
+@font-face {
+  font-family: "futvFont";
+  src: url("./assets/Fonts/Campora-black.ttf");
+}
+
+@font-face {
+  font-family: "bodyFont";
+  src: url("./assets/Fonts/OpenSans-Regular.ttf");
+}
+
+h1,h2,h3,h4,h5,h6{
+  font-family: 'futvFont', Arial, sans-serif;
+}
+
+.brand{
+  font-family: 'futvFont', Arial, sans-serif;
+}
+
+p, span,a,li{
+  font-family: 'bodyFont', Arial, sans-serif;
+}
 
 *{
   transition: all 0.3s;
@@ -11,6 +34,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: $info;
 }
 
 .navbar-container{
@@ -29,7 +53,7 @@ body {
 }
 
 .card{
-  transition: all 0.3s;
+  transition: all 0.4s;
   &:hover{
     transform: scale(1.01);
     box-shadow: 2px 2px 10px 2px #888888;
@@ -44,4 +68,33 @@ body {
 .chart-container{
   width: 100%;
   height: 100%;
+}
+
+.main-table{
+  &:hover{
+    border-radius: 10px;
+    box-shadow: 3px 5px 5px  rgb(177, 177, 177);
+  }
+  
+}
+
+.btn-main{
+  background-color: $primary;
+  color: white;
+  &:hover{
+    background-color: darken($primary, 10%);
+    color: white;
+  }
+  &:focus{
+    background-color: darken($primary, 10%);
+    color: white;
+  }
+}
+
+.text-success{
+  color: $secondary !important;
+}
+
+.text-detail1{
+  color: lighten($details,10%);
 }

@@ -1,7 +1,16 @@
+@import '../../colors.scss';
+
 .side-links{
+    color: $secondary;
     border-bottom: 1px solid transparent;
     font-weight: 700;
     &:hover{
-        border-bottom: 1px solid #0D6EFD;
+        color: darken($secondary, 10%);
+        border-bottom: 1px solid $details;
+        transform: scale(1.01);
     }
+}
+
+.nav-bg{
+    background-color: $primary;
 }
