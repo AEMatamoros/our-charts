@@ -34,7 +34,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: $info;
+  background: rgb(239,240,238);
+background: linear-gradient(164deg, rgba(239,240,238,1) 77%, rgba(108,94,69,1) 100%);
 }
 
 .navbar-container{
@@ -45,7 +46,7 @@ body {
   min-height: 80vh;
 }
 .footer-container{
-  height:10vh
+  height:15vh
 }
 
 .cursor-pointer{
@@ -81,6 +82,7 @@ body {
 .btn-main{
   background-color: $primary;
   color: white;
+  border-radius: 10px;
   &:hover{
     background-color: darken($primary, 10%);
     color: white;
