@@ -15,7 +15,7 @@ export default function Topbar() {
     >
       <Container>
         <Navbar.Brand href="#home">
-          <i className="fa-solid fa-leaf px-2"></i>Our Schema
+          <i className="fa-solid fa-leaf px-2"></i>Our Expense
         </Navbar.Brand>
         {/* <Button variant="light">
           <Link className="px-2" to="Login">
