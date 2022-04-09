@@ -10,13 +10,7 @@ import Home from './components/pages/home/Home';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <React.StrictMode>
-    
-        {/* <App /> */}
-        {/* <Login/> */}
-        {/* <Register/> */}
-        <Home/>
-  </React.StrictMode>,
+  <Home/>,
   document.getElementById('root')
 );
 
