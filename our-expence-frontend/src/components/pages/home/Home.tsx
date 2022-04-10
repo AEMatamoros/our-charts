@@ -1,13 +1,22 @@
-import React, { useState, useEffect } from 'react'
-
-import SideOptions from '../../layouts/SideOptions'
-import Modal from 'react-bootstrap/Modal'
-import Table from 'react-bootstrap/Table'
-import { useForm } from 'react-hook-form'
-
+import React, { useEffect, useState } from 'react';
+import SideOptions from '../../layouts/SideOptions';
+import Modal from 'react-bootstrap/Modal';
+import Table from 'react-bootstrap/Table';
+import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { loadProducts, createProduct, updateProduct, deleteProduct } from '../../actions/productActions';
+import { useParams } from 'react-router-dom';
+import { loadCategorys } from '../../actions/categoryActions';
+import { loadMonthTrack } from '../../actions/trackActions';
 
 export default function Home() {
+
+  let { id } = useParams();
+
+  //Dispatch
+  let dispatch = useDispatch()
 
   const [show, setShow] = useState(false);
 
@@ -24,6 +33,15 @@ export default function Home() {
     formState: { errors },
     setValue
   } = useForm()
+  
+  //Load Init Products
+  useEffect(() => {
+    dispatch(loadMonthTrack({}))
+    dispatch(loadProducts({}))
+    dispatch(loadCategorys({}))
+  }, [])
+
+  let expences: any = useSelector((state) => state)
 
   //Reset Form
   useEffect(() => {
@@ -33,39 +51,6 @@ export default function Home() {
     }
     
   }, [formState, reset]);
-
-  const [expenses, setExpenses] = useState([
-    {
-      id:1,
-      name: 'Product 1',
-      category: 'C1',
-      price: 10,
-    },
-    {
-      id:2,
-      name: 'Product 2',
-      category: 'C1',
-      price: 10,
-    },
-    {
-      id:3,
-      name: 'Product 3',
-      category: 'C1',
-      price: 10,
-    },
-    {
-      id:4,
-      name: 'Product 4',
-      category: 'C1',
-      price: 10,
-    },
-    {
-      id:5,
-      name: 'Product 5',
-      category: 'C1',
-      price: 10,
-    },
-  ])
 
   
   const handleClose = () => setShow(false)
@@ -77,7 +62,8 @@ export default function Home() {
         title:"Add New Product",
         button:"Add"
       })
-    }else{
+    }else if(type === 'edit'){
+      setValue('id',data["_id"]);
       setValue('name',data.name);
       setValue('price',data.price);
       setValue('category', data.category);
@@ -86,32 +72,60 @@ export default function Home() {
         button:"Edit"
       });
 
-    };
+    }else{
+      setValue('id',data["_id"]);
+      setValue('name',data.name);
+      setValue('price',data.price);
+      setValue('category', data.category);
+      setModalLabels({
+        title:"Edit Product",
+        button:"Edit"
+      });
+      setModalLabels({
+        title:"View",
+        button:"Edit"
+      });
+    }
 
     setShow(true)
   }
 
   const onSubmit = (data: any) => {
     if(modalLabels.title==='Add New Product'){
-      console.log("Create")
-      console.log(data)
+      dispatch(createProduct(data));
     }else{
-      console.log("Edit")
-      console.log(data)
+      dispatch(updateProduct(data));
     }
     setShow(false)
   }
 
   const HandleDelete = (id:number) =>{
-    Swal.fire(
-      "Delete product",
-      "<p>Are u shure u want to delete this product?</p>",
-      "warning"
-    ).then(res=>{
-      console.log("delete")
+    Swal.fire({
+      title: 'Do you want to delete the product?',
+      showDenyButton: true,
+      confirmButtonText: 'Delete',
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        dispatch(deleteProduct({id}))
+      }
     })
   }
 
+  const formatDate = (date:string) => {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+}
+ 
   return (
     <>
       <main className="col-12 row mx-0 main-container">
@@ -135,13 +149,16 @@ export default function Home() {
                 <th>Name</th>
                 <th>Category</th>
                 <th>Price</th>
+                <th>Date</th>
                 <th>Options</th>
               </tr>
             </thead>
             <tbody>
-              {expenses.map((product, index) => {
-                return (
-                  <tr key={index}>
+              {!!id ? <>
+                {expences.products.map((product:any, index:any) => {
+                  return<>
+                    {product.category === id &&
+                    <tr key={index}>
                     <td>{index + 1}</td>
                     <td>{product.name}</td>
                     <td>{product.category}</td>
@@ -154,8 +171,38 @@ export default function Home() {
                       </div>
                     </td>
                   </tr>
+                    }
+                  </>
+                  
+                
+              })}
+              </>
+              :
+              <>
+                {expences.products.map((product:any, index:any) => {
+                return (
+                  <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>{product.name}</td>
+                    <td>{expences.categories.map((cat:any)=>{
+                      if(cat._id == product.category){
+                        return cat.name
+                      }
+                    })}</td>
+                    <td>{product.price}</td>
+                    <td>{formatDate(product.date)}</td>
+                    <td>
+                      <div className="d-flex justify-content-evenly align-items-center">
+                        <i className="fa-solid fa-eye text-info" onClick={()=>{handleShow('view',product)}}></i>
+                        <i className="table-icons fa-solid fa-pen-to-square text-detail1 cursor-pointer" onClick={()=>{handleShow('edit',product)}}></i>
+                        <i className="table-icons fa-solid fa-trash-can text-danger cursor-pointer" onClick={()=>{HandleDelete(product.id)}}></i>
+                      </div>
+                    </td>
+                  </tr>
                 )
               })}
+              </>}
+              
             </tbody>
           </Table>
         </div>
@@ -173,6 +220,7 @@ export default function Home() {
                 className="form-control"
                 placeholder='My Product Name'
                 {...registerProduct('name', { required: true })}
+                disabled={modalLabels.title==='View'}
               />
               {errors.name && <span className='text-danger'>This field is required</span>}
             </div>
@@ -184,6 +232,7 @@ export default function Home() {
                 type="number"
                 placeholder='1'
                 {...registerProduct('price', { required: true })}
+                disabled={modalLabels.title==='View'}
               />
               {errors.price && <span className='text-danger'>This field is required</span>}
             </div>
@@ -194,19 +243,30 @@ export default function Home() {
               className="form-control"
               defaultValue=""
               {...registerProduct('category', { required: true })}
+              disabled={modalLabels.title==='View'}
             >
               <option value="" disabled>
                 -- Select --
               </option>
-              <option value="C1">Category1</option>
-              <option value="C1">Category2</option>
+              {expences.categories.map((category:any, index:any) => {
+                return (
+                  <option value={category._id}>{category.name}</option>
+              )})}
+              <input
+                className="form-control"
+                type="text"
+                placeholder='id'
+                hidden
+                {...registerProduct('id')}
+                disabled={modalLabels.title==='View'}
+              />
             </select>
             </div>
             
 
             {errors.category && <span className='text-danger'>This field is required</span>}
 
-            <button type="submit" className="form-control btn btn-main my-4">
+            <button type="submit" className="form-control btn btn-main my-4" hidden={modalLabels.title==='View'}>
               {modalLabels.button}
             </button>
           </form>

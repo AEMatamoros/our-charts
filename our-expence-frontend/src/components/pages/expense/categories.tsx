@@ -6,13 +6,20 @@ import SideOptions from '../../layouts/SideOptions'
 import Modal from 'react-bootstrap/Modal'
 import Table from 'react-bootstrap/Table'
 import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { loadCategorys, createCategory, updateCategory, deleteCategory } from '../../actions/categoryActions'
 
 export default function Categories() {
+
+  //Dispatch
+  let dispatch = useDispatch();
+
   const [show, setShow] = useState(false)
   const [modalLabels, setModalLabels] = useState({
     title: '',
     button: '',
   })
+
 
   const {
     register: registerProduct,
@@ -29,51 +36,30 @@ export default function Categories() {
     }
   }, [formState, reset])
 
-  let initialState = [
-    {
-      id: 1,
-      name: 'Food',
-      icon: 'fa-solid fa-burger fa-6x text-success',
-      max: 100,
-    },
-    {
-      id: 2,
-      name: 'Clothes',
-      icon: 'fa-solid fa-user fa-6x text-success',
-      max: 100,
-    },
-    {
-      id: 1,
-      name: 'Transport',
-      icon: 'fa-solid fa-car fa-6x text-success',
-      max: 100,
-    },
-    {
-      id: 1,
-      name: 'Games',
-      icon: 'fa-solid fa-gamepad fa-6x text-success',
-      max: 100,
-    },
-  ]
+  //Load Init Products
+  useEffect(() => {
+    dispatch(loadCategorys({}))
+  }, [])
 
-  const [expenses, setExpenses] = useState(initialState)
+  let expenses: any = useSelector((state) => state)
 
   const handleClose = () => setShow(false)
   const handleShow = (type: string, data: any = {}) => {
     if (type === 'create') {
-      reset({ name: '', price: '', category: '' })
+      reset({ name: '', price: '', category: '' });
       setModalLabels({
         title: 'Add New Product',
         button: 'Add',
-      })
+      });
     } else {
-      setValue('name', data.name)
-      setValue('price', data.price)
-      setValue('category', data.category)
+      setValue('id', data._id);
+      setValue('name', data.name);
+      setValue('max', data.max);
+      setValue('icon', data.icon);
       setModalLabels({
         title: 'Edit Product',
         button: 'Edit',
-      })
+      });
     }
 
     setShow(true)
@@ -81,22 +67,23 @@ export default function Categories() {
 
   const onSubmit = (data: any) => {
     if (modalLabels.title === 'Add New Product') {
-      console.log('Create')
-      console.log(data)
+      dispatch(createCategory(data));
     } else {
-      console.log('Edit')
-      console.log(data)
+      dispatch(updateCategory(data))
     }
     setShow(false)
   }
 
-  const HandleDelete = (id: number) => {
-    Swal.fire(
-      'Delete product',
-      '<p>Are u shure u want to delete this product?</p>',
-      'warning',
-    ).then((res) => {
-      console.log('delete')
+  const HandleDelete = (id:number) =>{
+    Swal.fire({
+      title: 'Do you want to delete the category?',
+      showDenyButton: true,
+      confirmButtonText: 'Delete',
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        dispatch(deleteCategory({id}))
+      }
     })
   }
 
@@ -128,25 +115,25 @@ export default function Categories() {
               </tr>
             </thead>
             <tbody>
-              {expenses.map((product, index) => {
+              {expenses.categories.map((category:any, index:number) => {
                 return (
                   <tr key={index}>
                     <td>{index + 1 }</td>
-                    <td>{product.name}</td>
-                    <td>{product.max}</td>
+                    <td>{category.name}</td>
+                    <td>{category.max}</td>
                     <td>
                       <div className="d-flex justify-content-evenly align-items-center">
-                        <Link to={`/categories/${index +1}`}><i className="fa-solid fa-eye text-info"></i></Link>
+                        <Link to={`/categories/${category._id}`}><i className="fa-solid fa-eye text-info"></i></Link>
                         <i
                           className="fa-solid fa-pen-to-square text-detail1 cursor-pointer"
                           onClick={() => {
-                            handleShow('edit', product)
+                            handleShow('edit', category)
                           }}
                         ></i>
                         <i
                           className="fa-solid fa-trash-can text-danger cursor-pointer"
                           onClick={() => {
-                            HandleDelete(product.id)
+                            HandleDelete(category.id)
                           }}
                         ></i>
                       </div>
@@ -169,7 +156,7 @@ export default function Categories() {
               <label> Product Name</label>
               <input
                 className="form-control"
-                placeholder="My Product Name"
+                placeholder="My Category Name"
                 {...registerProduct('name', { required: true })}
               />
               {errors.name && (
@@ -178,7 +165,7 @@ export default function Categories() {
             </div>
 
             <div className="form-group">
-              <label htmlFor="">Price</label>
+              <label htmlFor="">Max</label>
               <input
                 className="form-control"
                 type="number"
@@ -206,6 +193,15 @@ export default function Categories() {
                 <option value="fa-solid fa-gamepad fa-6x text-success">Gamepad</option>
               </select>
             </div>
+
+            <input
+                className="form-control"
+                type="text"
+                placeholder='id'
+                hidden
+                {...registerProduct('id')}
+                disabled={modalLabels.title==='View'}
+              />
 
             <button type="submit" className="form-control btn btn-main my-4">
               {modalLabels.button}

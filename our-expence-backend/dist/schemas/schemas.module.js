@@ -17,6 +17,9 @@ const category_controller_1 = require("../controllers/category.controller");
 const category_repository_1 = require("../repositories/category.repository");
 const category_service_1 = require("../services/category.service");
 const category_schema_1 = require("./category.schema");
+const track_repository_1 = require("../repositories/track.repository");
+const trackController_1 = require("../controllers/trackController");
+const track_service_1 = require("../services/track.service");
 let ProductModule = class ProductModule {
 };
 ProductModule = __decorate([
@@ -26,8 +29,8 @@ ProductModule = __decorate([
                 }, {
                     name: category_schema_1.Category.name, schema: category_schema_1.categorySchema
                 }])],
-        controllers: [product_controller_1.ProductController, category_controller_1.CategoryController],
-        providers: [product_service_1.ProductService, product_repository_1.ProductRepository, category_service_1.CategoryService, category_repository_1.categoryRepository]
+        controllers: [product_controller_1.ProductController, category_controller_1.CategoryController, trackController_1.TrackController],
+        providers: [product_service_1.ProductService, product_repository_1.ProductRepository, category_service_1.CategoryService, category_repository_1.categoryRepository, track_repository_1.TrackRepository, track_service_1.TrackService]
     })
 ], ProductModule);
 exports.ProductModule = ProductModule;
