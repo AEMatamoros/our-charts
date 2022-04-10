@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
 export default function Home() {
 
   const [show, setShow] = useState(false);
+
   const [modalLabels, setModalLabels] = useState({
     title:"",
     button:""
@@ -24,6 +25,7 @@ export default function Home() {
     setValue
   } = useForm()
 
+  //Reset Form
   useEffect(() => {
     
     if (formState.isSubmitSuccessful) {
@@ -146,6 +148,7 @@ export default function Home() {
                     <td>{product.price}</td>
                     <td>
                       <div className="d-flex justify-content-evenly align-items-center">
+                        <i className="fa-solid fa-eye text-info" onClick={()=>{handleShow('edit',product)}}></i>
                         <i className="table-icons fa-solid fa-pen-to-square text-detail1 cursor-pointer" onClick={()=>{handleShow('edit',product)}}></i>
                         <i className="table-icons fa-solid fa-trash-can text-danger cursor-pointer" onClick={()=>{HandleDelete(product.id)}}></i>
                       </div>

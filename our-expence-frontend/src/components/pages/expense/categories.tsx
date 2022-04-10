@@ -5,6 +5,7 @@ import SideOptions from '../../layouts/SideOptions'
 
 import Modal from 'react-bootstrap/Modal'
 import Table from 'react-bootstrap/Table'
+import { Link } from 'react-router-dom'
 
 export default function Categories() {
   const [show, setShow] = useState(false)
@@ -135,6 +136,7 @@ export default function Categories() {
                     <td>{product.max}</td>
                     <td>
                       <div className="d-flex justify-content-evenly align-items-center">
+                        <Link to={`/categories/${index +1}`}><i className="fa-solid fa-eye text-info"></i></Link>
                         <i
                           className="fa-solid fa-pen-to-square text-detail1 cursor-pointer"
                           onClick={() => {

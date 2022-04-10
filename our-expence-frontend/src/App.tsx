@@ -24,6 +24,8 @@ function App() {
       <Route path="/report" element={<><Navbar /><Report /><Footer /></>} />
       <Route path="/tracker" element={<><Navbar /><Tracker /><Footer /></>} />
       <Route path="/categories" element={<><Navbar /><Categories /><Footer /></>} />
+      <Route path="/categories/:id" element={<><Navbar /><Home /><Footer /></>} />
+
       {/* <Route path="login" element={<Login />} /> */}
       {/* <Route path="register" element={<Register />} /> */}
       {/* <Route path="*" element={<Login/>}/> */}

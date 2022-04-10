@@ -36,16 +36,19 @@ export default function Tracker() {
         <div className="row">
           <h1 className="col-12">Track</h1>
           <div className="col-12 row">
-            {categories.map((category) => {
+            {categories.map((category, index) => {
               return (
-                <div className="col-4 px-4 my-2">
-                  <Card key={category.id} className="cursor-pointer">
+                <div className="col-sm-6 cl-xs-12  col-md-4 col-lg-4 px-4 my-2" key = {index}>
+                  <Card key={category.id} className="cursor-pointer card">
                     <Card.Body>
                       <Card.Title>{category.name}</Card.Title>
                       <Card.Text className="d-flex justify-content-center align-items-center">
                         <i className={`${category.icon}`}></i>
                       </Card.Text>
                     </Card.Body>
+                    <div className="card-overlay">
+                      <p>Ok TO be OK</p>
+                    </div>
                   </Card>
                 </div>
               )
