@@ -76,13 +76,15 @@ background: linear-gradient(164deg, rgba(239,240,238,1) 77%, rgba(108,94,69,1) 1
 }
 
 .main-table{
+  border-radius: 10px;
+  cursor: pointer;
   thead{
     background-color: $primary;
     color:$secondary
   }
   &:hover{
-    border-radius: 10px;
-    box-shadow: 3px 5px 5px  rgb(177, 177, 177);
+    
+    box-shadow: 1px 2px 2px  rgb(177, 177, 177);
   }
   
 }
