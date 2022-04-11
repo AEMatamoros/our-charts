@@ -141,7 +141,7 @@ export default function Home() {
         <SideOptions />
         <div className="col-sm-12 col-xs-12 col-md-9 col-lg-9 px-4 mt-5">
           <div className="row">
-            <h1 className="col-10">My Expense</h1>
+            <h1 className="col-10">Our Expences</h1>
             <div className="col-2">
               <button
                 className="btn btn-main form-control"
