@@ -42,7 +42,7 @@ export default function Home() {
     dispatch(loadMonthTrack({}))
     dispatch(loadProducts({}))
     dispatch(loadCategorys({}))
-  }, [])
+  }, [dispatch])
 
   let expences: any = useSelector((state) => state);
 
@@ -194,8 +194,10 @@ export default function Home() {
                     <td>{index + 1}</td>
                     <td>{product.name}</td>
                     <td>{expences.categories.map((cat:any)=>{
-                      if(cat._id == product.category){
+                      if(cat._id === product.category){
                         return cat.name
+                      }else{
+                        return <></>
                       }
                     })}</td>
                     <td>{product.price}</td>

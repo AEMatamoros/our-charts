@@ -31,9 +31,13 @@ export default function Report() {
 
   //Load Init Products
   useEffect(() => {
-    dispatch(loadFilteredTrack(year, month))
     dispatch(loadCategorys({}))
   }, [dispatch])
+
+  useEffect(() => {
+    dispatch(loadFilteredTrack(year, month))
+
+  }, [dispatch, year, month])
 
   let expences: any = useSelector((state) => state);
 
@@ -49,22 +53,19 @@ export default function Report() {
     });
     
 
-  const handleType = (e: any) => {
-    setShow(parseInt(e.target.value));
-  }
+  // const handleType = (e: any) => {
+  //   setShow(parseInt(e.target.value));
+  // }
 
   const [show, setShow] = useState(1)
 
   const {
     register: registerData,
     handleSubmit,
-    formState,
-    reset,
   } = useForm()
 
 
   const onSubmit = (data: any) => {
-    console.log(data)
     dispatch(loadFilteredTrack(data.year, data.month))
   }
   

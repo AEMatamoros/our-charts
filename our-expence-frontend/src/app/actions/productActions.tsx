@@ -1,4 +1,4 @@
-import { fetchSinToken, fetchConToken } from '../../helpers/fetch';
+import { fetchSinToken} from '../../helpers/fetch';
 import { types } from '../types/types'
 import Swal from 'sweetalert2';
 import { GetProduct, PostProduct } from '../interfaces/products';
