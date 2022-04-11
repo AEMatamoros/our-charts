@@ -1,6 +1,6 @@
 window.env = {
   "ALLUSERSPROFILE": "C:\\ProgramData",
-  "API_URL": "http://localhost:3000",
+  "API_URL": "https://ourexpencesapi.herokuapp.com",
   "APPDATA": "C:\\Users\\alexis.matamoros\\AppData\\Roaming",
   "CHROME_CRASHPAD_PIPE_NAME": "\\\\.\\pipe\\crashpad_10324_AODTSBVESBZUUNMA",
   "COLORTERM": "truecolor",
