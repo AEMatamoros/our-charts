@@ -1,22 +1,25 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useForm } from 'react-hook-form';
+
 import SideOptions from '../../layouts/SideOptions';
 import Modal from 'react-bootstrap/Modal';
 import Table from 'react-bootstrap/Table';
-import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
-import { useDispatch, useSelector } from 'react-redux';
 
 import { loadProducts, createProduct, updateProduct, deleteProduct } from '../../actions/productActions';
-import { useParams } from 'react-router-dom';
 import { loadCategorys } from '../../actions/categoryActions';
 import { loadMonthTrack } from '../../actions/trackActions';
+
+import TrackAlerts from '../../../helpers/trackAlerts';
 
 export default function Home() {
 
   let { id } = useParams();
 
   //Dispatch
-  let dispatch = useDispatch()
+  let dispatch = useDispatch();
 
   const [show, setShow] = useState(false);
 
@@ -41,7 +44,13 @@ export default function Home() {
     dispatch(loadCategorys({}))
   }, [])
 
-  let expences: any = useSelector((state) => state)
+  let expences: any = useSelector((state) => state);
+
+
+  useEffect(() => {
+    TrackAlerts(expences);
+  }, [expences])
+  
 
   //Reset Form
   useEffect(() => {
@@ -154,7 +163,7 @@ export default function Home() {
               </tr>
             </thead>
             <tbody>
-              {!!id ? <>
+              {id && id.length > 0 ? <>
                 {expences.products.map((product:any, index:any) => {
                   return<>
                     {product.category === id &&
@@ -167,7 +176,7 @@ export default function Home() {
                       <div className="d-flex justify-content-evenly align-items-center">
                         <i className="fa-solid fa-eye text-info" onClick={()=>{handleShow('edit',product)}}></i>
                         <i className="table-icons fa-solid fa-pen-to-square text-detail1 cursor-pointer" onClick={()=>{handleShow('edit',product)}}></i>
-                        <i className="table-icons fa-solid fa-trash-can text-danger cursor-pointer" onClick={()=>{HandleDelete(product.id)}}></i>
+                        <i className="table-icons fa-solid fa-trash-can text-danger cursor-pointer" onClick={()=>{HandleDelete(product._id)}}></i>
                       </div>
                     </td>
                   </tr>
@@ -195,7 +204,7 @@ export default function Home() {
                       <div className="d-flex justify-content-evenly align-items-center">
                         <i className="fa-solid fa-eye text-info" onClick={()=>{handleShow('view',product)}}></i>
                         <i className="table-icons fa-solid fa-pen-to-square text-detail1 cursor-pointer" onClick={()=>{handleShow('edit',product)}}></i>
-                        <i className="table-icons fa-solid fa-trash-can text-danger cursor-pointer" onClick={()=>{HandleDelete(product.id)}}></i>
+                        <i className="table-icons fa-solid fa-trash-can text-danger cursor-pointer" onClick={()=>{HandleDelete(product._id)}}></i>
                       </div>
                     </td>
                   </tr>

@@ -1,6 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+
+import { loadFilteredTrack } from '../../actions/trackActions'
 
 import SideOptions from '../../layouts/SideOptions'
+
+import { useForm } from 'react-hook-form'
 
 import {
   LineChart,
@@ -14,55 +19,88 @@ import {
   Legend,
   ResponsiveContainer
 } from 'recharts'
+import { loadCategorys } from '../../actions/categoryActions'
 
 export default function Report() {
-  const data = [
-    { name: 'Enero', uv: 400 },
-    { name: 'Febrero', uv: 500 },
-    { name: 'Marzo', uv: 100 },
-  ]
+
+  let year = new Date().getFullYear();
+  let month = new Date().getMonth() + 1;
+
+  //Dispatch
+  let dispatch = useDispatch()
+
+  //Load Init Products
+  useEffect(() => {
+    dispatch(loadFilteredTrack(year, month))
+    dispatch(loadCategorys({}))
+  }, [dispatch])
+
+  let expences: any = useSelector((state) => state);
+
+  let alerts:any[] = []
+    expences.track.forEach((track:any) => {
+
+        expences.categories.forEach((category:any) => {
+            if(track._id === category._id){
+                alerts.push({name:category.name, total:track.total})
+            }
+        });
+
+    });
+    
 
   const handleType = (e: any) => {
     setShow(parseInt(e.target.value));
   }
 
   const [show, setShow] = useState(1)
+
+  const {
+    register: registerData,
+    handleSubmit,
+    formState,
+    reset,
+  } = useForm()
+
+
+  const onSubmit = (data: any) => {
+    console.log(data)
+    dispatch(loadFilteredTrack(data.year, data.month))
+  }
+  
   return (
     <main className="col-12 row mx-0 main-container">
       <SideOptions />
-      <div className="col-sm-12 col-xs-12 col-md-9 col-lg-9 px-4 mt-5">
+      <form className="col-sm-12 col-xs-12 col-md-9 col-lg-9 px-4 mt-5" onSubmit={handleSubmit(onSubmit)}>
         <div className="row">
           <h1 className="col-6">Monthly Report</h1>
           <div className="col-2">
             <div className="form-group">
-              <strong><label htmlFor="">Type</label></strong>
+              {/* <strong><label htmlFor="">Type</label></strong>
               <select
                 name=""
                 id=""
                 className="form-control"
                 onChange={handleType}
               >
-                <option value="1">Category</option>
-                <option value="2">Bills</option>
-              </select>
+                <option value="2">Line</option>
+                <option value="1">Bar</option>
+              </select> */}
+            <strong><label htmlFor="">View</label></strong>
+            <button className='btn btn-main form-control' type='submit'><i className='fas fa-eye'></i></button>
+
             </div>
           </div>
           <div className="col-2">
             <div className="form-group">
               <strong><label htmlFor="">Year</label></strong>
-              <select name="" id="" className="form-control">
-                <option value="2022">2022</option>
-                <option value="2023">2023</option>
-                <option value="2024">2024</option>
-                <option value="2025">2025</option>
-                <option value="2026">2026</option>
-              </select>
+              <input id="" className="form-control" type="number" defaultValue={year} {...registerData('year')}/>
             </div>
           </div>
           <div className="col-2">
             <div className="form-group">
               <strong><label htmlFor="">Month</label></strong>
-              <select name="" id="" className="form-control">
+              <select  id="" className="form-control" defaultValue={month} {...registerData('month')}>
                 <option value="1">January</option>
                 <option value="2">Febreuary</option>
                 <option value="3">March</option>
@@ -80,29 +118,36 @@ export default function Report() {
           </div>
           <div className="col-2"></div>
           <div className="col-12 row">
-            {show === 1 ? (
+            {alerts.length > 0 ? <>
+              {show === 2 ? (<>
               <ResponsiveContainer width={'99%'} height={350}>
-              <LineChart width={970} height={400} data={data}>
-                <Line type="monotone" dataKey="uv" stroke="#8884d8" />
+              <LineChart width={970} height={400} data={alerts}>
+                <Line type="monotone" dataKey="total" stroke="#8884d8" />
                 <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
                 <XAxis dataKey="name" />
                 <YAxis />
               </LineChart>
               </ResponsiveContainer>
+              </>
             ) : (
+              <>
               <ResponsiveContainer width={'99%'} height={350}>
-              <BarChart width={970} height={400} data={data}>
+              <BarChart width={970} height={400} data={alerts}>
                 <XAxis dataKey="name" />
                 <YAxis />
                 <Tooltip />
                 <Legend />
-                <Bar dataKey="uv" fill="#8884d8" />
+                <Bar dataKey="total" fill="#8884d8" />
               </BarChart>
               </ResponsiveContainer>
-            )}
+              </>
+            )}</>:<>
+              <h2 className='text-center mt-5'>No Data</h2>
+            </>}
+            
           </div>
         </div>
-      </div>
+      </form>
     </main>
   )
 }

@@ -18,10 +18,11 @@ export class categoryRepository{
     }
 
     async finOneAndUpdate(categoryFilterQuery: FilterQuery<Category>, category: Partial<Category>):Promise<Category>{
-        return this.categoryModel.findOneAndUpdate(categoryFilterQuery.id, category)
+
+        return this.categoryModel.findOneAndUpdate({_id:categoryFilterQuery.id.id}, category)
     }
 
     async findOneAndDelete(categorytFilterQuery: FilterQuery<Category>): Promise<any>{
-        return this.categoryModel.findOneAndDelete(categorytFilterQuery.id)
+        return this.categoryModel.findOneAndDelete({_id:categorytFilterQuery.id.id})
     }
 }

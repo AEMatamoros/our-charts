@@ -22,4 +22,7 @@ export const types = {
     loadMonthTrack : '[track] Current Month Track load',
     loadMonthTrackFinish : '[track] Current Month Track Load Finished',
 
+    loadFilteredTrack : '[track] Current Filtered Track load',
+    loadFilteredTrackFinish : '[track] Current Filtered Track Load Finished',
+
 }

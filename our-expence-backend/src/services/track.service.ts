@@ -6,8 +6,8 @@ import { Injectable } from "@nestjs/common";
 export class TrackService{
     constructor(private readonly productRepository: TrackRepository){}
 
-    async getMonthTrack(): Promise<Product[]>{
-        return this.productRepository.findMonthTrack({})
+    async getMonthTrack(data:any): Promise<Product[]>{
+        return this.productRepository.findMonthTrack(data)
     }
     
 }

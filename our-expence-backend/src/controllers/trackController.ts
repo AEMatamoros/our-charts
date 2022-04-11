@@ -1,4 +1,4 @@
-import {Body, Controller, Get, Param, Put, Post, Delete} from '@nestjs/common';
+import {Controller, Get, Query} from '@nestjs/common';
 
 import { Product } from 'src/schemas/product.schama';
 import { TrackService } from 'src/services/track.service';
@@ -8,8 +8,8 @@ export class TrackController{
     constructor(private readonly productService: TrackService){}
 
     @Get()
-    async getmonthTrack():Promise<Product[]>{
-        return this.productService.getMonthTrack();
+    async getmonthTrack(@Query() data:{year:number, month:number}):Promise<Product[]>{
+        return this.productService.getMonthTrack(data);
     }
 
 }

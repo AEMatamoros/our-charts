@@ -1,6 +1,7 @@
 import { fetchSinToken, fetchConToken } from '../../helpers/fetch';
 import { types } from '../types/types'
 import Swal from 'sweetalert2';
+import { GetProduct, PostProduct } from '../interfaces/products';
 
 export const loadProducts = ({}) => {
   return async (dispatch:any) => {
@@ -21,12 +22,12 @@ export const loadProducts = ({}) => {
   }
 }
 
-const loadProductsFinish = (products:any) => ({
+const loadProductsFinish = (products:GetProduct) => ({
   type: types.loadProductsFinish,
   payload: products,
 })
 
-export const createProduct = (product:any)=>{
+export const createProduct = (product:PostProduct)=>{
   return async (dispatch:any)=>{
     const resp = await fetchSinToken(
       'product',
@@ -88,6 +89,9 @@ const updateProductFinish = (product:any) => ({
 
 export const deleteProduct = (product:any)=>{
   return async (dispatch:any)=>{
+    console.log("product")
+    console.log(product)
+
     const resp = await fetchSinToken(
       `product/${product.id}`,
       {},

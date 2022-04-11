@@ -28,8 +28,8 @@ let ProductController = class ProductController {
     async putProduct(id, product) {
         return this.productService.putProduct(id, product);
     }
-    async deleteProduct(_id) {
-        return this.productService.deleteProduct(_id);
+    async deleteProduct(id) {
+        return this.productService.deleteProduct(id);
     }
 };
 __decorate([

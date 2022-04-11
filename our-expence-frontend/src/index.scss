@@ -130,7 +130,16 @@ background: linear-gradient(164deg, rgba(239,240,238,1) 77%, rgba(108,94,69,1) 1
   &:hover{
     .card-overlay{
       z-index: 1;
-      background-color: rgba(108,94,69,.5);
+      background-color: rgba(52, 238, 102, 0.834);
+      p{
+        color: black;
+      }
+    }
+  }
+  &:hover{
+    .card-overlay.not-ok{
+      z-index: 1;
+      background-color: rgba(238, 92, 52, 0.834);
       p{
         color: black;
       }

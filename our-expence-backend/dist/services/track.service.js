@@ -16,8 +16,8 @@ let TrackService = class TrackService {
     constructor(productRepository) {
         this.productRepository = productRepository;
     }
-    async getMonthTrack() {
-        return this.productRepository.findMonthTrack({});
+    async getMonthTrack(data) {
+        return this.productRepository.findMonthTrack(data);
     }
 };
 TrackService = __decorate([

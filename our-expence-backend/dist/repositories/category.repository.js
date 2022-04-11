@@ -29,10 +29,10 @@ let categoryRepository = class categoryRepository {
         return newCategory.save();
     }
     async finOneAndUpdate(categoryFilterQuery, category) {
-        return this.categoryModel.findOneAndUpdate(categoryFilterQuery.id, category);
+        return this.categoryModel.findOneAndUpdate({ _id: categoryFilterQuery.id.id }, category);
     }
     async findOneAndDelete(categorytFilterQuery) {
-        return this.categoryModel.findOneAndDelete(categorytFilterQuery.id);
+        return this.categoryModel.findOneAndDelete({ _id: categorytFilterQuery.id.id });
     }
 };
 categoryRepository = __decorate([

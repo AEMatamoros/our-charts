@@ -17,7 +17,7 @@ export default function Topbar() {
           
           <i className="fa-solid fa-leaf px-2 main-icon"></i> 
           <span className='brand'>
-          Our Expense
+          Our Expences
           </span>
           
         </Navbar.Brand>

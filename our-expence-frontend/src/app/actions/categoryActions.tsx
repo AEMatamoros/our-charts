@@ -1,6 +1,7 @@
 import { fetchSinToken, fetchConToken } from '../../helpers/fetch';
 import { types } from '../types/types'
 import Swal from 'sweetalert2';
+import { GetCategory, PostCategory, PutCategory } from '../interfaces/category';
 
 export const loadCategorys = ({}) => {
   return async (dispatch:any) => {
@@ -21,12 +22,12 @@ export const loadCategorys = ({}) => {
   }
 }
 
-const loadCategorysFinish = (categories:any) => ({
+const loadCategorysFinish = (categories:GetCategory) => ({
   type: types.loadCategorysFinish,
   payload: categories,
 })
 
-export const createCategory = (category:any)=>{
+export const createCategory = (category:PostCategory)=>{
   return async (dispatch:any)=>{
     const resp = await fetchSinToken(
       'category',
@@ -48,12 +49,12 @@ export const createCategory = (category:any)=>{
   }
 }
 
-const addCategory = (category:any) => ({
+const addCategory = (category:GetCategory) => ({
   type: types.addCategory,
   payload: category,
 })
 
-export const updateCategory = (category:any)=>{
+export const updateCategory = (category:PutCategory)=>{
   return async (dispatch:any)=>{
     const resp = await fetchSinToken(
       `category/${category.id}`,

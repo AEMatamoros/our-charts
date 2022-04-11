@@ -18,10 +18,10 @@ export class ProductRepository{
     }
 
     async finOneAndUpdate(productFilterQuery: FilterQuery<Product>, product: Partial<Product>):Promise<Product>{
-        return this.productModel.findOneAndUpdate(productFilterQuery.id, product)
+        return this.productModel.findOneAndUpdate({_id:productFilterQuery.id.id}, product)
     }
 
     async findOneAndDelete(productFilterQuery: FilterQuery<Product>): Promise<any>{
-        return this.productModel.findOneAndDelete(productFilterQuery.id)
+        return this.productModel.findOneAndDelete({_id:productFilterQuery.id.id})
     }
 }

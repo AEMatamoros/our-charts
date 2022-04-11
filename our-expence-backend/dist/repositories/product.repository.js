@@ -29,10 +29,10 @@ let ProductRepository = class ProductRepository {
         return newProduct.save();
     }
     async finOneAndUpdate(productFilterQuery, product) {
-        return this.productModel.findOneAndUpdate(productFilterQuery.id, product);
+        return this.productModel.findOneAndUpdate({ _id: productFilterQuery.id.id }, product);
     }
     async findOneAndDelete(productFilterQuery) {
-        return this.productModel.findOneAndDelete(productFilterQuery.id);
+        return this.productModel.findOneAndDelete({ _id: productFilterQuery.id.id });
     }
 };
 ProductRepository = __decorate([

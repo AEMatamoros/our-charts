@@ -6,16 +6,16 @@ import {
   Route,
 } from "react-router-dom";
 
-import Navbar from './components/layouts/Navbar';
-import Footer from './components/layouts/Footer';
+import Navbar from './app/layouts/Navbar';
+import Footer from './app/layouts/Footer';
 
-// import Login from './components/login/Login';
-// import Register from './components/login/Register';
+// import Login from './app/login/Login';
+// import Register from './app/login/Register';
 
-import Home from './components/pages/home/Home';
-import Report from './components/pages/expense/Report';
-import Tracker from './components/pages/expense/Tracker';
-import Categories from './components/pages/expense/categories';
+import Home from './app/components/home/Home';
+import Report from './app/components/expense/Report';
+import Tracker from './app/components/expense/Tracker';
+import Categories from './app/components/expense/categories';
 
 function App() {
   return (

@@ -3,5 +3,5 @@ import { TrackRepository } from "src/repositories/track.repository";
 export declare class TrackService {
     private readonly productRepository;
     constructor(productRepository: TrackRepository);
-    getMonthTrack(): Promise<Product[]>;
+    getMonthTrack(data: any): Promise<Product[]>;
 }

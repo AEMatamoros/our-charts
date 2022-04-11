@@ -15,5 +15,5 @@ export declare class ProductController {
         price?: number;
         category?: any;
     }): Promise<Product>;
-    deleteProduct(_id: string): Promise<any>;
+    deleteProduct(id: string): Promise<any>;
 }

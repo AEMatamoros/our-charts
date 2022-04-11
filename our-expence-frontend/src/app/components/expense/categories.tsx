@@ -133,7 +133,7 @@ export default function Categories() {
                         <i
                           className="fa-solid fa-trash-can text-danger cursor-pointer"
                           onClick={() => {
-                            HandleDelete(category.id)
+                            HandleDelete(category._id)
                           }}
                         ></i>
                       </div>
