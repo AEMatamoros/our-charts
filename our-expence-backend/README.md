@@ -22,6 +22,43 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
+## Proyect Structure
+    .
+    ├── dist                                     
+    ├── src  
+    │   ├── controllers         
+    │   │        ├── category.controller.ts
+    │   │        ├── product.controller.ts
+    │   │        └── track.controller.ts          
+    │   ├── repositories 
+    │   │        ├── category.repository.ts
+    │   │        ├── product.repository.ts
+    │   │        └── track.repository.ts 
+    │   ├── services   
+    │   │        ├── category.service.ts
+    │   │        ├── product.service.ts
+    │   │        └── track.service.ts 
+    │   ├── schemas   
+    │   │        ├── category.schema.ts
+    │   │        ├── product.schema.ts
+    │   │        └── schemas.module.ts        
+    │   ├── app.controller.spec.ts
+    │   ├── app.controller.ts
+    │   ├── app.services
+    │   ├── app.module.ts
+    │   └── main.ts                  
+    ├── test    
+    │   ├── app.e2e-spec.ts
+    │   └── jest-e2e.json                  
+    ├── LICENSE
+    ├── .env
+    ├── .eslintcr.js
+    ├── .prettier
+    ├── nest-cli.json
+    ├── package-lock.json
+    ├── package.json
+    └── README.md
+
 ## Description
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
@@ -37,6 +74,7 @@ $ npm install
 ```bash
 # development
 $ npm run start
+#### app will run in port 3001
 
 # watch mode
 $ npm run start:dev

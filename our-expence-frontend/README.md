@@ -7,12 +7,45 @@ https://our-expence-2g5fie2jn-aematamoros.vercel.app/
 
 ## Proyect Structure
     .
-    ├── dist                                     
+    ├── public
+    │   ├── env.js
+    │   ├── favicon.png
+    │   ├── index.html
+    │   ├── robots.txt
+    │   └── manifest.json.ts                                                     
     ├── src  
-    │   ├── controllers         
-    │   │        ├── category.controller.ts
-    │   │        ├── product.controller.ts
-    │   │        └── track.controller.ts          
+    │   ├── app         
+    │   │    ├── actions
+    │   │    │    ├── categoryActions.tsx
+    │   │    │    ├── productActions.tsx
+    │   │    │    └──  trackActions.tsx
+    │   │    ├── components
+    │   │    │    ├── expense
+    │   │    │    │    ├── Categories.tsx
+    │   │    │    │    ├── Reports.tsx
+    │   │    │    │    └── Tracker.tsx
+    │   │    │    └── home
+    │   │    │    │    └── home.tsx
+    │   │    ├── interfaces
+    │   │    │    │    ├── category.tsx
+    │   │    │    │    ├── product.tsx
+    │   │    │    │    └── track.tsx
+    │   │    ├── layouts
+    │   │    │    │    ├── Footer.tsx
+    │   │    │    │    ├── Navbar.scss
+    │   │    │    │    ├── Sideoptions.scss
+    │   │    │    │    └── layaout.scss
+    │   │    ├── reducers
+    │   │    │    │    ├── CategoriesReducer.tsx
+    │   │    │    │    ├── productsReducer.tsx
+    │   │    │    │    ├── rootReducer.tsx
+    │   │    │    │    └── trackReducer.tsx
+    │   │    ├── shareds
+    │   │    │    │    └── TrackCard.scss
+    │   │    ├── store
+    │   │    │    └── store.tsx
+    │   │    └── types 
+    │   │    │    └── types.tsx         
     │   ├── repositories 
     │   │        ├── category.repository.ts
     │   │        ├── product.repository.ts
@@ -21,23 +54,26 @@ https://our-expence-2g5fie2jn-aematamoros.vercel.app/
     │   │        ├── category.service.ts
     │   │        ├── product.service.ts
     │   │        └── track.service.ts 
-    │   ├── schemas   
-    │   │        ├── category.schema.ts
-    │   │        ├── product.schema.ts
-    │   │        └── schemas.module.ts        
-    │   ├── app.controller.spec.ts
-    │   ├── app.controller.ts
-    │   ├── app.services
-    │   ├── app.module.ts
-    │   └── main.ts                  
+    │   ├── assets   
+    │   │        ├── Fonts
+    │   │        └── Img  
+    │   ├── helpers   
+    │   │        ├── fetch.tsx
+    │   │        └── trackAlerts.tsx       
+    │   ├── App.css
+    │   ├── App.test.tsx
+    │   ├── App.tsx
+    │   ├── colors.scss
+    │   ├── index.scss
+    │   ├── index.tsx
+    │   ├── report.webVitals.ts
+    │   ├── setupTest.ts
+    │   └── react-app-env.d.ts
     ├── test    
     │   ├── app.e2e-spec.ts
     │   └── jest-e2e.json                  
-    ├── LICENSE
     ├── .env
-    ├── .eslintcr.js
-    ├── .prettier
-    ├── nest-cli.json
+    ├── tsconfig.json
     ├── package-lock.json
     ├── package.json
     └── README.md
