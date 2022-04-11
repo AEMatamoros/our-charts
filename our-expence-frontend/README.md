@@ -1,6 +1,47 @@
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Demo
+### Follow the link for demo
+https://our-expence-2g5fie2jn-aematamoros.vercel.app/
+
+## Proyect Structure
+    .
+    ├── dist                                     
+    ├── src  
+    │   ├── controllers         
+    │   │        ├── category.controller.ts
+    │   │        ├── product.controller.ts
+    │   │        └── track.controller.ts          
+    │   ├── repositories 
+    │   │        ├── category.repository.ts
+    │   │        ├── product.repository.ts
+    │   │        └── track.repository.ts 
+    │   ├── services   
+    │   │        ├── category.service.ts
+    │   │        ├── product.service.ts
+    │   │        └── track.service.ts 
+    │   ├── schemas   
+    │   │        ├── category.schema.ts
+    │   │        ├── product.schema.ts
+    │   │        └── schemas.module.ts        
+    │   ├── app.controller.spec.ts
+    │   ├── app.controller.ts
+    │   ├── app.services
+    │   ├── app.module.ts
+    │   └── main.ts                  
+    ├── test    
+    │   ├── app.e2e-spec.ts
+    │   └── jest-e2e.json                  
+    ├── LICENSE
+    ├── .env
+    ├── .eslintcr.js
+    ├── .prettier
+    ├── nest-cli.json
+    ├── package-lock.json
+    ├── package.json
+    └── README.md
+
 
 ## Available Scripts
 
