@@ -3,7 +3,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 # Demo
 ### Follow the link for demo
-https://our-expence-2g5fie2jn-aematamoros.vercel.app/
+https://our-expence.vercel.app/
 
 ## Proyect Structure
     .
