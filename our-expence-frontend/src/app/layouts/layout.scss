@@ -5,6 +5,9 @@
     border-bottom: 1px solid transparent;
     font-weight: 700;
     &:hover{
+        i{
+            color: $details !important;
+        }
         color: darken($secondary, 10%);
         border-bottom: 1px solid $details;
         transform: scale(1.01);
@@ -14,3 +17,31 @@
 .nav-bg{
     background-color: $primary;
 }
+
+.footer{
+    height: 30vh;
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    .links{
+        a{
+            i{
+            transition: all .5s;
+            color: white;
+            &:hover{
+                cursor: pointer;
+                color: $details;
+            }
+        }}
+    }
+    .cop{
+        span{
+            color: $details;
+        }
+    }
+}
+

@@ -13,7 +13,7 @@ export default function Topbar() {
       fixed="top"
     >
       <Container>
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href="/">
           
           <i className="fa-solid fa-leaf px-2 main-icon"></i> 
           <span className='brand'>

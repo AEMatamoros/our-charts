@@ -38,7 +38,7 @@ export default function Tracker() {
       <div className="col-sm-12 col-xs-12 col-md-9 col-lg-9 px-4 mt-5">
         <div className="row">
           <h1 className="col-12">Track</h1>
-          <div className="col-12 row">
+          <div className="col-12 row m-0 p-0">
             {alerts.map((alert, index) => {
               return (
                 <div className="col-sm-6 cl-xs-12  col-md-4 col-lg-4 px-4 my-2" key = {index}>

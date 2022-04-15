@@ -93,10 +93,10 @@ export default function Categories() {
         <SideOptions />
         <div className="col-sm-12 col-xs-12 col-md-9 col-lg-9 px-4 mt-5">
           <div className="row">
-            <h1 className="col-10">My Categories</h1>
-            <div className="col-2">
+            <h1 className="col-sm-12 col-xs-12 col-md-10 col-lg-10">My Categories</h1>
+            <div className="col-sm-12 col-xs-12 col-md-2 col-lg-2">
               <button
-                className="btn btn-main form-control"
+                className="btn btn-main form-control my-1"
                 onClick={() => {
                   handleShow('create')
                 }}

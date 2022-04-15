@@ -36,6 +36,8 @@ export default function Home() {
     formState: { errors },
     setValue
   } = useForm()
+
+  let expences: any = useSelector((state) => state);
   
   //Load Init Products
   useEffect(() => {
@@ -44,12 +46,11 @@ export default function Home() {
     dispatch(loadCategorys({}))
   }, [dispatch])
 
-  let expences: any = useSelector((state) => state);
 
 
   useEffect(() => {
     TrackAlerts(expences);
-  }, [expences])
+  }, [])
   
 
   //Reset Form
@@ -141,10 +142,10 @@ export default function Home() {
         <SideOptions />
         <div className="col-sm-12 col-xs-12 col-md-9 col-lg-9 px-4 mt-5">
           <div className="row">
-            <h1 className="col-10">Our Expences</h1>
-            <div className="col-2">
+            <h1 className="col-sm-12 col-xs-12 col-md-10 col-lg-10">Our Expences</h1>
+            <div className="col-sm-12 col-xs-12 col-md-2 col-lg-2">
               <button
-                className="btn btn-main form-control"
+                className="btn btn-main form-control my-1"
                 onClick={()=>{handleShow('create')}}
               >
                 Create
