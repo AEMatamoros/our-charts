@@ -81,8 +81,8 @@ export default function Report() {
                 className="form-control"
                 onChange={handleType}
               >
-                <option value="2">Line</option>
                 <option value="1">Bar</option>
+                <option value="2">Line</option>
               </select>
             </div>
           </div>
